@@ -51,10 +51,10 @@ const EditDeleteButton = ({ index }) => {
 
 const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'checkinDate', headerName: 'Check-in Date', width: 200 },
-    { field: 'checkinTime', headerName: 'Check-in Time', width: 200 },
-    { field: 'checkoutDate', headerName: 'Check-out Date', width: 200,},
-    { field: 'checkoutTime', headerName: 'Check-out Time', width: 200/*valueGetter: (params) =>
+    { field: 'checkInDate', headerName: 'Check-in Date', width: 200 },
+    { field: 'checkInTime', headerName: 'Check-in Time', width: 200 },
+    { field: 'checkOutDate', headerName: 'Check-out Date', width: 200,},
+    { field: 'checkOutTime', headerName: 'Check-out Time', width: 200/*valueGetter: (params) =>
             `${params.getValue(params.id, 'firstName') || ''} ${
                 params.getValue(params.id, 'lastName') || ''
             }`,*/},
@@ -83,19 +83,22 @@ const rows = [
 ];
 
 export default function TimeTable() {
-    const [data, setData] = useState([]);
+    const [entry, setEntry] = useState([])
 
     useEffect(() => {
-        (async () => {
-            const result = await axios("https://api.tvmaze.com/search/shows?q=snow");
-            setData(result.data);
-        })();
-    }, []);
+        const fetchEntry = async () => {
+            const response = await fetch('http://localhost:8080/entries');
+            const postsData = await response.json()
+            setEntry(postsData)
+        }
+        fetchEntry();
+    }, [])
+
 
     return (
         <div style={{ height: 400, width: '70%', marginLeft: '15%'}}>
             <DataGrid
-                rows={rows}
+                rows={entry}
                 columns={columns}
                 pageSize={5}
                 rowsPerPageOptions={[5]}
