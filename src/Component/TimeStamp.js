@@ -9,23 +9,27 @@ import {useState} from 'react'
 
 
 export default function BasicDatePicker() {
-    const [checkIn, setCheckIn] = useState(null)
-    const [checkOut, setCheckOut] = useState(null)
+    const [checkInDate, setCheckInDate] = useState(null)
+    const [checkOutDate, setCheckOutDate] = useState(null)
+    const [checkInTime, setCheckInTime] = useState(null)
+    const [checkOutTime, setCheckOutTime] = useState(null)
+    /* const newRows = [...rows, newRow]
 
-    const handleChangeCheckIn = (checkIn) => {
-        setCheckIn(checkIn)
-    }
-
-    const handleChangeCheckOut = (checkOut) => {
-        setCheckOut(checkOut)
-    }
+     const handleAddButtonClick = () => {
+         const newRows = {
+             id: 1,
+             checkInDate: 1,
+             checkInTime: 1,
+             checkOutDate: 1,
+             checkOutTime: 1
+         }*/
     return (
         <LocalizationProvider dateAdapter={AdapterDateFns}>
             <DatePicker
                 label="Check-In Date"
-                value={checkIn}
-                onChange={(checkIn) => {
-                    setCheckIn(checkIn)
+                value={checkInDate}
+                onChange={(checkInDate) => {
+                    setCheckInDate(checkInDate)
                 }}
                 renderInput={(params) => <TextField {...params} />}
             />
@@ -33,17 +37,19 @@ export default function BasicDatePicker() {
             <br/>
             <TimePicker
                 label="Check-In Time"
-                value={checkIn}
-                onChange={handleChangeCheckIn}
+                value={checkInTime}
+                onChange={(checkInTime) => {
+                    setCheckInTime(checkInTime)
+                }}
                 renderInput={(params) => <TextField {...params} />}
             />
             <br/>
             <br/>
             <DatePicker
                 label="Check-Out Date"
-                value={checkOut}
-                onChange={(checkOut) => {
-                    setCheckOut(checkOut)
+                value={checkOutDate}
+                onChange={(checkOutDate) => {
+                    setCheckOutDate(checkOutDate)
                 }}
                 renderInput={(params) => <TextField {...params} />}
             />
@@ -51,8 +57,10 @@ export default function BasicDatePicker() {
             <br/>
             <TimePicker
                 label="Check-Out Time"
-                value={checkOut}
-                onChange={handleChangeCheckOut}
+                value={checkOutTime}
+                onChange={(checkOutTime) => {
+                    setCheckOutTime(checkOutTime)
+                }}
                 renderInput={(params) => <TextField {...params} />}
             />
             <br/>
@@ -62,3 +70,5 @@ export default function BasicDatePicker() {
         </LocalizationProvider>
     )
 }
+
+

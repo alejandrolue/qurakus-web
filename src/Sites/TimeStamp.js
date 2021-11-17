@@ -2,7 +2,7 @@ import BasicDatePicker from '../Component/TimeStamp'
 import Header from '../Component/Header'
 import TimeTable from '../Component/TimeTable'
 
-function TimeStamp() {
+function TimeStamp(props) {
     return (
         <div className="App">
             <header className="App">
