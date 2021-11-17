@@ -51,9 +51,9 @@ const EditDeleteButton = ({ index }) => {
 
 const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'checkInDate', headerName: 'Check-in Date', width: 200 },
+    { field: 'checkIn', headerName: 'Check-in Date', width: 200 },
     { field: 'checkInTime', headerName: 'Check-in Time', width: 200 },
-    { field: 'checkOutDate', headerName: 'Check-out Date', width: 200,},
+    { field: 'checkOut', headerName: 'Check-out Date', width: 200,},
     { field: 'checkOutTime', headerName: 'Check-out Time', width: 200/*valueGetter: (params) =>
             `${params.getValue(params.id, 'firstName') || ''} ${
                 params.getValue(params.id, 'lastName') || ''
@@ -77,11 +77,6 @@ const columns = [
         }
     }
 ]
-
-const rows = [
-    { id: 1, checkinDate: '11/10/2020', checkinTime: '11:00 am', checkoutDate: '11/20/2002', checkoutTime: '11:01 am' },
-];
-
 export default function TimeTable() {
     const [entry, setEntry] = useState([])
 
@@ -94,7 +89,6 @@ export default function TimeTable() {
         fetchEntry();
     }, [])
 
-
     return (
         <div style={{ height: 400, width: '70%', marginLeft: '15%'}}>
             <DataGrid
@@ -103,6 +97,7 @@ export default function TimeTable() {
                 pageSize={5}
                 rowsPerPageOptions={[5]}
                 checkboxSelection
+                onRowClick={() => console.log("hi")}
             />
         </div>
     );

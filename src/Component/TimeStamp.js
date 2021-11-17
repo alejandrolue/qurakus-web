@@ -9,10 +9,8 @@ import {useState} from 'react'
 
 
 export default function BasicDatePicker() {
-    const [checkInDate, setCheckInDate] = useState(null)
-    const [checkOutDate, setCheckOutDate] = useState(null)
-    const [checkInTime, setCheckInTime] = useState(null)
-    const [checkOutTime, setCheckOutTime] = useState(null)
+    const [checkIn, setCheckIn] = useState(null)
+    const [checkOut, setCheckOut] = useState(null)
     /* const newRows = [...rows, newRow]
 
      const handleAddButtonClick = () => {
@@ -23,50 +21,73 @@ export default function BasicDatePicker() {
              checkOutDate: 1,
              checkOutTime: 1
          }*/
+
+    let dataCheckIn = checkIn
+    let dataCheckOut = checkOut
+
+
     return (
         <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <DatePicker
-                label="Check-In Date"
-                value={checkInDate}
-                onChange={(checkInDate) => {
-                    setCheckInDate(checkInDate)
-                }}
-                renderInput={(params) => <TextField {...params} />}
-            />
-            <br/>
-            <br/>
-            <TimePicker
-                label="Check-In Time"
-                value={checkInTime}
-                onChange={(checkInTime) => {
-                    setCheckInTime(checkInTime)
-                }}
-                renderInput={(params) => <TextField {...params} />}
-            />
-            <br/>
-            <br/>
-            <DatePicker
-                label="Check-Out Date"
-                value={checkOutDate}
-                onChange={(checkOutDate) => {
-                    setCheckOutDate(checkOutDate)
-                }}
-                renderInput={(params) => <TextField {...params} />}
-            />
-            <br/>
-            <br/>
-            <TimePicker
-                label="Check-Out Time"
-                value={checkOutTime}
-                onChange={(checkOutTime) => {
-                    setCheckOutTime(checkOutTime)
-                }}
-                renderInput={(params) => <TextField {...params} />}
-            />
-            <br/>
-            <br/>
-            <Button variant="contained">Send</Button>
+            <form onSubmit={(event) => {
 
+                const time = {
+                    category: {
+                        id: 1
+                    },
+                    checkIn: dataCheckIn,
+                    checkOut: dataCheckOut,
+
+
+                }
+                console.log(time)
+                fetch('http://localhost:8080/entries', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(time)
+                })
+            }}>
+                <DatePicker
+                    label="Check-In Date"
+                    value={checkIn}
+                    onChange={(checkIn) => {
+                        setCheckIn(checkIn)
+                    }}
+                    renderInput={(params) => <TextField {...params} />}
+                />
+                <br/>
+                <br/>
+                <TimePicker
+                    label="Check-In Time"
+                    value={checkIn}
+                    onChange={(checkIn) => {
+                        setCheckIn(checkIn)
+                    }}
+                    renderInput={(params) => <TextField {...params} />}
+                />
+                <br/>
+                <br/>
+                <DatePicker
+                    label="Check-Out Date"
+                    value={checkOut}
+                    onChange={(checkOut) => {
+                        setCheckOut(checkOut)
+                    }}
+                    renderInput={(params) => <TextField {...params} />}
+                />
+                <br/>
+                <br/>
+                <TimePicker
+                    label="Check-Out Time"
+                    value={checkOut}
+                    onChange={(checkOut) => {
+                        setCheckOut(checkOut)
+                    }}
+                    renderInput={(params) => <TextField {...params} />}
+                />
+                <br/>
+                <br/>
+                <Button variant="contained" type={'submit'}>Send</Button>
+            </form>
         </LocalizationProvider>
     )
 }
