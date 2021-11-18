@@ -11,54 +11,85 @@ import {useState} from 'react'
 export default function BasicDatePicker() {
     const [checkIn, setCheckIn] = useState(null)
     const [checkOut, setCheckOut] = useState(null)
+    /* const newRows = [...rows, newRow]
 
-    const handleChangeCheckIn = (checkIn) => {
-        setCheckIn(checkIn)
-    }
+     const handleAddButtonClick = () => {
+         const newRows = {
+             id: 1,
+             checkInDate: 1,
+             checkInTime: 1,
+             checkOutDate: 1,
+             checkOutTime: 1
+         }*/
 
-    const handleChangeCheckOut = (checkOut) => {
-        setCheckOut(checkOut)
-    }
+    let dataCheckIn = checkIn
+    let dataCheckOut = checkOut
+
+
     return (
         <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <DatePicker
-                label="Check-In Date"
-                value={checkIn}
-                onChange={(checkIn) => {
-                    setCheckIn(checkIn)
-                }}
-                renderInput={(params) => <TextField {...params} />}
-            />
-            <br/>
-            <br/>
-            <TimePicker
-                label="Check-In Time"
-                value={checkIn}
-                onChange={handleChangeCheckIn}
-                renderInput={(params) => <TextField {...params} />}
-            />
-            <br/>
-            <br/>
-            <DatePicker
-                label="Check-Out Date"
-                value={checkOut}
-                onChange={(checkOut) => {
-                    setCheckOut(checkOut)
-                }}
-                renderInput={(params) => <TextField {...params} />}
-            />
-            <br/>
-            <br/>
-            <TimePicker
-                label="Check-Out Time"
-                value={checkOut}
-                onChange={handleChangeCheckOut}
-                renderInput={(params) => <TextField {...params} />}
-            />
-            <br/>
-            <br/>
-            <Button variant="contained">Send</Button>
+            <form onSubmit={(event) => {
 
+                const time = {
+                    category: {
+                        id: 1
+                    },
+                    checkIn: dataCheckIn,
+                    checkOut: dataCheckOut,
+
+
+                }
+                console.log(time)
+                fetch('http://localhost:8080/entries', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(time)
+                })
+            }}>
+                <DatePicker
+                    label="Check-In Date"
+                    value={checkIn}
+                    onChange={(checkIn) => {
+                        setCheckIn(checkIn)
+                    }}
+                    renderInput={(params) => <TextField {...params} />}
+                />
+                <br/>
+                <br/>
+                <TimePicker
+                    label="Check-In Time"
+                    value={checkIn}
+                    onChange={(checkIn) => {
+                        setCheckIn(checkIn)
+                    }}
+                    renderInput={(params) => <TextField {...params} />}
+                />
+                <br/>
+                <br/>
+                <DatePicker
+                    label="Check-Out Date"
+                    value={checkOut}
+                    onChange={(checkOut) => {
+                        setCheckOut(checkOut)
+                    }}
+                    renderInput={(params) => <TextField {...params} />}
+                />
+                <br/>
+                <br/>
+                <TimePicker
+                    label="Check-Out Time"
+                    value={checkOut}
+                    onChange={(checkOut) => {
+                        setCheckOut(checkOut)
+                    }}
+                    renderInput={(params) => <TextField {...params} />}
+                />
+                <br/>
+                <br/>
+                <Button variant="contained" type={'submit'}>Send</Button>
+            </form>
         </LocalizationProvider>
     )
 }
+
+
