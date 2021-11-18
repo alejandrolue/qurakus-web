@@ -6,6 +6,9 @@ import { FormControlLabel, IconButton } from "@material-ui/core";
 import { blue } from "@material-ui/core/colors";
 import {useEffect, useState} from 'react'
 import axios from 'axios'
+import {GridCellParams} from '@mui/x-data-grid'
+import {GridCellValue} from '@mui/x-data-grid'
+import {GridApi} from '@mui/x-data-grid'
 
 const EditIconButton = ({ index }) => {
     const handleEditClick = () => {
@@ -50,7 +53,7 @@ const EditDeleteButton = ({ index }) => {
 };
 
 const columns = [
-    { field: 'id', headerName: 'ID', width: 70 },
+    { field: 'id', headerName: 'ID', width: 100 },
     { field: 'checkIn', headerName: 'Check-in Date', width: 200 },
     { field: 'checkInTime', headerName: 'Check-in Time', width: 200 },
     { field: 'checkOut', headerName: 'Check-out Date', width: 200,},
