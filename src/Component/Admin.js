@@ -5,6 +5,7 @@ import {Tab, Tabs} from '@material-ui/core'
 import {useState} from 'react'
 import TimeStamp from '../Sites/TimeStamp'
 import CreateNewUser from './CreateNewUser'
+import CreateNewTeam from './CreateNewTeam'
 
 function Admin() {
     const [value, setValue] = useState(0)
@@ -25,6 +26,9 @@ function Admin() {
             }
             {value === 1 &&
             <CreateNewUser/>
+            }
+            {value === 2 &&
+            <CreateNewTeam/>
             }
 
         </div>
