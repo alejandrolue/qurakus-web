@@ -4,11 +4,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { FormControlLabel, IconButton } from "@material-ui/core";
 import { blue } from "@material-ui/core/colors";
-import {useEffect, useState} from 'react'
-import axios from 'axios'
-import {GridCellParams} from '@mui/x-data-grid'
-import {GridCellValue} from '@mui/x-data-grid'
-import {GridApi} from '@mui/x-data-grid'
+import {useEffect, useState} from 'react';
+import { format } from 'date-fns'
 
 const EditIconButton = ({ index }) => {
     const handleEditClick = () => {
@@ -81,7 +78,36 @@ const columns = [
     }
 ]
 export default function TimeTable() {
+    const columns = [
+        { field: 'id', headerName: 'ID', width: 100 },
+        { field: 'checkInDate', headerName: 'Check-in Date', width: 200 },
+        { field: 'checkInTime', headerName: 'Check-in Time', width: 200 },
+        { field: 'checkOutDate', headerName: 'Check-out Date', width: 200,},
+        { field: 'checkOutTime', headerName: 'Check-out Time', width: 200/*valueGetter: (params) =>
+            `${params.getValue(params.id, 'firstName') || ''} ${
+                params.getValue(params.id, 'lastName') || ''
+            }`,*/},
+        {
+            field: "actions",
+            headerName: "Actions",
+            sortable: false,
+            width: 140,
+            disableClickEventBubbling: true,
+            renderCell: (params) => {
+                return (
+                    <div
+                        className="d-flex justify-content-between align-items-center"
+                        style={{cursor: "pointer"}}
+                    >
+                        <EditDeleteButton index={params.row.id}/>
+                        <EditIconButton index={params.row.id}/>
+                    </div>
+                );
+            }
+        }
+    ]
     const [entry, setEntry] = useState([])
+
 
     useEffect(() => {
         const fetchEntry = async () => {

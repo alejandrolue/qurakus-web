@@ -6,6 +6,7 @@ import {useState} from 'react'
 import TimeStamp from '../Sites/TimeStamp'
 import CreateNewUser from './CreateNewUser'
 import CreateNewTeam from './CreateNewTeam'
+import DeleteUser from './DeleteUser'
 
 function Admin() {
     const [value, setValue] = useState(0)
@@ -20,6 +21,7 @@ function Admin() {
                 <Tab label="Punchclock"/>
                 <Tab label="Create User"/>
                 <Tab label="Create Team"/>
+                <Tab label="Delete User" />
             </Tabs>
             {value === 0 &&
             <TimeStamp/>
@@ -29,6 +31,9 @@ function Admin() {
             }
             {value === 2 &&
             <CreateNewTeam/>
+            }
+            {value === 3 &&
+            <DeleteUser />
             }
 
         </div>
