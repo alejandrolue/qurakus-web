@@ -7,6 +7,7 @@ import {
 import App from "./App";
 import TimeStamp from './Sites/TimeStamp'
 import LoginPage from './Sites/LoginPage'
+import AdminPage from './Sites/AdminPage'
 
 const rootElement = document.getElementById("root");
 render(
@@ -15,6 +16,7 @@ render(
             <Route path="/" element={<App />} />
             <Route path="/punchclock" element={<TimeStamp />} />
             <Route path="/loginPage" element={<LoginPage />} />
+            <Route path="/admin" element={<AdminPage />} />
         </Routes>
     </BrowserRouter>,
     rootElement
