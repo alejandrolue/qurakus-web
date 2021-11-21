@@ -3,7 +3,7 @@ import Header from '../Component/Header'
 
 function AdminPage() {
     return (
-        <div className="Admin">
+        <div className="App">
             <Header/>
             <br/>
             <br/>
