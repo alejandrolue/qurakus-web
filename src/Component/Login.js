@@ -2,29 +2,34 @@ import * as React from 'react'
 import {TextField, Typography} from '@material-ui/core'
 import Button from '@mui/material/Button'
 import {useState} from 'react'
+import axios from 'axios'
 
 export default function Login() {
     const [username, setUsername] = useState()
     const [password, setPassword] = useState()
 
-    let dataUsername = username
-    let dataPassword = password
     return (
         <div>
             <Typography style={{ fontWeight: 550 }} variant="h2" component="div" gutterBottom>
                 Log in
             </Typography>
-            <form onSubmit={() =>
+            <form onSubmit={(e) =>
             {
+                e.preventDefault()
                 const login = {
-                    username: dataUsername,
-                    password: dataPassword
+                    username,
+                    password
                 }
                 console.log(login)
-                fetch('http://localhost:8080/auth/login', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify(login)
+                axios.post('http://localhost:8080/auth/login', {
+                    username,
+                    password
+                }).then((res) => {
+                    console.log(res)
+                })
+
+                return fetch('http://localhost8080/auth/login', {
+
                 })
             }}>
             <TextField
