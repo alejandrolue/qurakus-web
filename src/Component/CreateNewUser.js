@@ -15,11 +15,7 @@ export default function Login() {
             </Typography>
             <form onSubmit={(e) => {
                 e.preventDefault()
-                const login = {
-                    username,
-                    password
-                }
-                console.log(login)
+                console.log(username, password)
                 axios.post('http://localhost:8080/auth/new-user', {
                     username,
                     password
