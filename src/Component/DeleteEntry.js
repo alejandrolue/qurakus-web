@@ -33,7 +33,7 @@ export default function DeleteEntry() {
             </Typography>
             <form onSubmit={(e) => {
                 console.log(entryID)
-                axios.delete('http://localhost:8080/entries' + entryID, {
+                axios.post('http://localhost:8080/entries/' + entryID, {
                 }).then((res) => {
                     console.log(res)
                 })

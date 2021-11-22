@@ -9,6 +9,8 @@ import CreateNewTeam from './CreateNewTeam'
 import DeleteUser from './DeleteUser'
 import UpdateUser from './UpdateUser'
 import DeleteEntry from './DeleteEntry'
+import CreateNewProject from './CreateNewProject'
+
 
 function Admin() {
     const [value, setValue] = useState(0)
@@ -23,14 +25,14 @@ function Admin() {
                 <Tab label="Punchclock"/>
                 <Tab label="Create User"/>
                 <Tab label="Create Team"/>
-                <Tab label="Delete User" />
-                <Tab label="Update User" />
-                <Tab label="Delete Entry" />
+                <Tab label="Delete User"/>
+                <Tab label="Update User"/>
+                <Tab label="Delete Entry"/>
+                <Tab label="Create Project"/>
             </Tabs>
             {value === 0 &&
             <TimeStamp/>
             }
-
             {value === 1 &&
             <CreateNewUser/>
             }
@@ -38,13 +40,16 @@ function Admin() {
             <CreateNewTeam/>
             }
             {value === 3 &&
-            <DeleteUser />
+            <DeleteUser/>
             }
             {value === 4 &&
             <UpdateUser/>
             }
             {value === 5 &&
             <DeleteEntry/>
+            }
+            {value === 6 &&
+            <CreateNewProject/>
             }
 
         </div>
