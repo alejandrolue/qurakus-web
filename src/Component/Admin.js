@@ -8,6 +8,7 @@ import CreateNewUser from './CreateNewUser'
 import CreateNewTeam from './CreateNewTeam'
 import DeleteUser from './DeleteUser'
 import UpdateUser from './UpdateUser'
+import DeleteEntry from './DeleteEntry'
 
 function Admin() {
     const [value, setValue] = useState(0)
@@ -24,10 +25,12 @@ function Admin() {
                 <Tab label="Create Team"/>
                 <Tab label="Delete User" />
                 <Tab label="Update User" />
+                <Tab label="Delete Entry" />
             </Tabs>
             {value === 0 &&
             <TimeStamp/>
             }
+
             {value === 1 &&
             <CreateNewUser/>
             }
@@ -39,6 +42,9 @@ function Admin() {
             }
             {value === 4 &&
             <UpdateUser/>
+            }
+            {value === 5 &&
+            <DeleteEntry/>
             }
 
         </div>

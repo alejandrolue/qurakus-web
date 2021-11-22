@@ -5,7 +5,6 @@ import EditIcon from '@mui/icons-material/Edit';
 import { FormControlLabel, IconButton } from "@material-ui/core";
 import { blue } from "@material-ui/core/colors";
 import {useEffect, useState} from 'react';
-import { format } from 'date-fns'
 
 const EditIconButton = ({ index }) => {
     const handleEditClick = () => {
@@ -49,34 +48,6 @@ const EditDeleteButton = ({ index }) => {
     );
 };
 
-const columns = [
-    { field: 'id', headerName: 'ID', width: 100 },
-    { field: 'checkIn', headerName: 'Check-in Date', width: 200 },
-    { field: 'checkInTime', headerName: 'Check-in Time', width: 200 },
-    { field: 'checkOut', headerName: 'Check-out Date', width: 200,},
-    { field: 'checkOutTime', headerName: 'Check-out Time', width: 200/*valueGetter: (params) =>
-            `${params.getValue(params.id, 'firstName') || ''} ${
-                params.getValue(params.id, 'lastName') || ''
-            }`,*/},
-    {
-        field: "actions",
-        headerName: "Actions",
-        sortable: false,
-        width: 140,
-        disableClickEventBubbling: true,
-        renderCell: (params) => {
-            return (
-                <div
-                    className="d-flex justify-content-between align-items-center"
-                    style={{cursor: "pointer"}}
-                >
-                    <EditDeleteButton index={params.row.id}/>
-                    <EditIconButton index={params.row.id}/>
-                </div>
-            );
-        }
-    }
-]
 export default function TimeTable() {
     const columns = [
         { field: 'id', headerName: 'ID', width: 100 },

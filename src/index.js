@@ -13,9 +13,8 @@ const rootElement = document.getElementById("root");
 render(
     <BrowserRouter>
         <Routes>
-            <Route path="/" element={<App />} />
             <Route path="/punchclock" element={<TimeStamp />} />
-            <Route path="/loginPage" element={<LoginPage />} />
+            <Route path="/" element={<LoginPage />} />
             <Route path="/admin" element={<AdminPage />} />
         </Routes>
     </BrowserRouter>,
