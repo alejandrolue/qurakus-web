@@ -29,6 +29,7 @@ export default function AssignTeamProject() {
         }
         fetchEntry();
     }, [])
+
     useEffect(() => {
         const fetchEntry = async () => {
             const response = await fetch('http://localhost:8080//projects');

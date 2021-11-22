@@ -12,6 +12,8 @@ import DeleteEntry from './DeleteEntry'
 import CreateNewProject from './CreateNewProject'
 import UpdateEntry from './UpdateEntry'
 import AssignTeamProject from './AssignTeamProject'
+import DeleteTeam from './DeleteTeam'
+import DeleteProject from './DeleteProject'
 
 
 function Admin() {
@@ -32,7 +34,9 @@ function Admin() {
                 <Tab label="Update User"/>
                 <Tab label="Create new Team"/>
                 <Tab label="Create new Project"/>
-                <Tab label="Assing Team a Project"/>
+                <Tab label="Assing Team Project"/>
+                <Tab label="Delete Team"/>
+                <Tab label="Delete Project"/>
             </Tabs>
             {value === 0 &&
             <TimeStamp/>
@@ -60,6 +64,12 @@ function Admin() {
             }
             {value === 8 &&
             <AssignTeamProject/>
+            }
+            {value === 9 &&
+            <DeleteTeam/>
+            }
+            {value === 10 &&
+            <DeleteProject/>
             }
         </div>
     )
