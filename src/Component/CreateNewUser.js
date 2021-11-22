@@ -7,6 +7,7 @@ import axios from 'axios'
 export default function Login() {
     const [username, setUsername] = useState()
     const [password, setPassword] = useState()
+    const [roleID, setRoleID] = useState()
 
     return (
         <div>
@@ -18,7 +19,10 @@ export default function Login() {
                 console.log(username, password)
                 axios.post('http://localhost:8080/auth/new-user', {
                     username,
-                    password
+                    password,
+                    role: {
+                        id: roleID
+                    }
                 }).then((res) => {
                     console.log(res)
                 })
@@ -42,10 +46,17 @@ export default function Login() {
                     multiline
                     variant="filled"
                     onChange={event => setPassword(event.target.value)}
-
                 />
                 <br/>
                 <br/>
+                <TextField
+                    id="filled-textarea"
+                    label="Set role by ID"
+                    placeholder="Set role by ID"
+                    multiline
+                    variant="filled"
+                    onChange={event => setRoleID(event.target.value)}
+                />
                 <Button variant="contained" type={'submit'}>Send</Button>
             </form>
         </div>
