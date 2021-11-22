@@ -80,31 +80,13 @@ const columns = [
 export default function TimeTable() {
     const columns = [
         { field: 'id', headerName: 'ID', width: 100 },
-        { field: 'checkInDate', headerName: 'Check-in Date', width: 200 },
-        { field: 'checkInTime', headerName: 'Check-in Time', width: 200 },
-        { field: 'checkOutDate', headerName: 'Check-out Date', width: 200,},
-        { field: 'checkOutTime', headerName: 'Check-out Time', width: 200/*valueGetter: (params) =>
-            `${params.getValue(params.id, 'firstName') || ''} ${
-                params.getValue(params.id, 'lastName') || ''
-            }`,*/},
-        {
-            field: "actions",
-            headerName: "Actions",
-            sortable: false,
-            width: 140,
-            disableClickEventBubbling: true,
-            renderCell: (params) => {
-                return (
-                    <div
-                        className="d-flex justify-content-between align-items-center"
-                        style={{cursor: "pointer"}}
-                    >
-                        <EditDeleteButton index={params.row.id}/>
-                        <EditIconButton index={params.row.id}/>
-                    </div>
-                );
-            }
-        }
+        { field: 'checkIn', headerName: 'Check-in Date', width: 200 },
+        { field: 'checkOut', headerName: 'Check-out Date', width: 200,},
+        { field: 'projekt', headerName: 'Project', width: 200,},
+        { field: 'message', headerName: 'Message', width: 200,},
+
+
+
     ]
     const [entry, setEntry] = useState([])
 
@@ -118,7 +100,7 @@ export default function TimeTable() {
     }, [])
 
     return (
-        <div style={{ height: 400, width: '70%', marginLeft: '15%'}}>
+        <div style={{ height: 400, width: '50%', marginLeft: '25%'}}>
             <DataGrid
                 rows={entry}
                 columns={columns}

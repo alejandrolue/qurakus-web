@@ -27,18 +27,16 @@ export default function BasicDatePicker() {
              checkOutTime: 1
          }*/
 
-    let dataCheckIn = checkIn
-    let dataCheckOut = checkOut
-
 
     return (
         <LocalizationProvider dateAdapter={AdapterDateFns}>
             <form onSubmit={(event) => {
+                console.log(checkIn, checkOut)
                 axios.post('http://localhost:8080/entries', {
                   checkIn,
                   checkOut,
                   message,
-                  project
+                  projekt: project
                 })
             }}>
                 <DatePicker
