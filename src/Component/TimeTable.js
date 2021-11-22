@@ -108,7 +108,6 @@ export default function TimeTable() {
     ]
     const [entry, setEntry] = useState([])
 
-
     useEffect(() => {
         const fetchEntry = async () => {
             const response = await fetch('http://localhost:8080/entries');

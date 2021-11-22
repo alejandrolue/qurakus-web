@@ -6,11 +6,14 @@ import TimePicker from '@mui/lab/TimePicker'
 import {DatePicker} from '@mui/lab'
 import Button from '@mui/material/Button'
 import {useState} from 'react'
+import axios from 'axios'
 
 
 export default function BasicDatePicker() {
     const [checkIn, setCheckIn] = useState(null)
     const [checkOut, setCheckOut] = useState(null)
+    const [message, setMessage] = useState()
+    const [project, setProject] = useState()
 
 
     /* const newRows = [...rows, newRow]
@@ -31,21 +34,11 @@ export default function BasicDatePicker() {
     return (
         <LocalizationProvider dateAdapter={AdapterDateFns}>
             <form onSubmit={(event) => {
-
-                const time = {
-                    category: {
-                        id: 1
-                    },
-                    checkIn: dataCheckIn,
-                    checkOut: dataCheckOut,
-
-
-                }
-                console.log(time)
-                fetch('http://localhost:8080/entries', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify(time)
+                axios.post('http://localhost:8080/entries', {
+                  checkIn,
+                  checkOut,
+                  message,
+                  project
                 })
             }}>
                 <DatePicker
@@ -85,6 +78,28 @@ export default function BasicDatePicker() {
                         setCheckOut(checkOut)
                     }}
                     renderInput={(params) => <TextField {...params} />}
+                />
+                <br/>
+                <br/>
+                <TextField
+                    id="filled-textarea"
+                    label="Message"
+                    placeholder="Message"
+                    multiline
+                    variant="filled"
+                    onChange={event => setMessage(event.target.value)}
+
+                />
+                <br/>
+                <br/>
+                <TextField
+                    id="filled-textarea"
+                    label="Project"
+                    placeholder="Project"
+                    multiline
+                    variant="filled"
+                    onChange={event => setProject(event.target.value)}
+
                 />
                 <br/>
                 <br/>

@@ -10,53 +10,45 @@ export default function Login() {
 
     return (
         <div>
-            <Typography style={{ fontWeight: 550 }} variant="h2" component="div" gutterBottom>
+            <Typography style={{fontWeight: 550}} variant="h2" component="div" gutterBottom>
                 Log in
             </Typography>
-            <form onSubmit={(e) =>
-            {
+            <form onSubmit={(e) => {
                 e.preventDefault()
-                const login = {
-                    username,
-                    password
-                }
-                console.log(login)
+                console.log(username, password)
                 axios.post('http://localhost:8080/auth/login', {
                     username,
                     password
                 }).then((res) => {
-                    console.log(res)
-                })
-
-                return fetch('http://localhost8080/auth/login', {
-
+                    console.log(res.data)
+                    console.log(res.headers['Authorization']);
                 })
             }}>
-            <TextField
-                id="filled-textarea"
-                label="Username"
-                placeholder="Username"
-                multiline
-                variant="filled"
-                value={username}
-                onChange={event => setUsername(event.target.value)}
+                <TextField
+                    id="filled-textarea"
+                    label="Username"
+                    placeholder="Username"
+                    multiline
+                    variant="filled"
+                    value={username}
+                    onChange={event => setUsername(event.target.value)}
 
-            />
-            <br/>
-            <br/>
-            <TextField
-                id="filled-textarea"
-                label="Password"
-                placeholder="Password"
-                multiline
-                variant="filled"
-                onChange={event => setPassword(event.target.value)}
+                />
+                <br/>
+                <br/>
+                <TextField
+                    id="filled-textarea"
+                    label="Password"
+                    placeholder="Password"
+                    multiline
+                    variant="filled"
+                    onChange={event => setPassword(event.target.value)}
 
-            />
-            <br/>
-            <br/>
-            <Button variant="contained" type={'submit'}>Send</Button>
+                    />
+                <br/>
+                <br/>
+                <Button variant="contained" type={'submit'}>Send</Button>
             </form>
         </div>
-    );
+    )
 }
