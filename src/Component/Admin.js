@@ -10,6 +10,8 @@ import DeleteUser from './DeleteUser'
 import UpdateUser from './UpdateUser'
 import DeleteEntry from './DeleteEntry'
 import CreateNewProject from './CreateNewProject'
+import UpdateEntry from './UpdateEntry'
+import AssignTeamProject from './AssignTeamProject'
 
 
 function Admin() {
@@ -23,35 +25,42 @@ function Admin() {
         <div className="App">
             <Tabs value={value} onChange={handleChange} aria-label="disabled tabs example">
                 <Tab label="Punchclock"/>
+                <Tab label="Update Entry"/>
+                <Tab label="Delete Entry"/>
                 <Tab label="Create User"/>
-                <Tab label="Create Team"/>
                 <Tab label="Delete User"/>
                 <Tab label="Update User"/>
-                <Tab label="Delete Entry"/>
-                <Tab label="Create Project"/>
+                <Tab label="Create new Team"/>
+                <Tab label="Create new Project"/>
+                <Tab label="Assing Team a Project"/>
             </Tabs>
             {value === 0 &&
             <TimeStamp/>
             }
             {value === 1 &&
-            <CreateNewUser/>
+            <UpdateEntry/>
             }
             {value === 2 &&
-            <CreateNewTeam/>
-            }
-            {value === 3 &&
-            <DeleteUser/>
-            }
-            {value === 4 &&
-            <UpdateUser/>
-            }
-            {value === 5 &&
             <DeleteEntry/>
             }
+            {value === 3 &&
+            <CreateNewUser/>
+            }
+            {value === 4 &&
+            <DeleteUser/>
+            }
+            {value === 5 &&
+            <UpdateUser/>
+            }
             {value === 6 &&
+            <CreateNewTeam/>
+            }
+            {value === 7 &&
             <CreateNewProject/>
             }
-
+            {value === 8 &&
+            <AssignTeamProject/>
+            }
         </div>
     )
 }

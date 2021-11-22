@@ -53,7 +53,7 @@ export default function TimeTable() {
         { field: 'id', headerName: 'ID', width: 100 },
         { field: 'checkIn', headerName: 'Check-in Date', width: 200 },
         { field: 'checkOut', headerName: 'Check-out Date', width: 200,},
-        { field: 'projekt', headerName: 'Project', width: 200,},
+        { field: 'project', headerName: 'Project', width: 200,},
         { field: 'message', headerName: 'Message', width: 200,},
 
 
